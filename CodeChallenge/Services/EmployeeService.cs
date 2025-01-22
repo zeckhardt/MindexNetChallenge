@@ -19,6 +19,14 @@ namespace CodeChallenge.Services
             _logger = logger;
         }
 
+        /// <summary>
+        /// Creates a new employee record and saves it to the repository.
+        /// </summary>
+        /// <param name="employee">The <see cref="Employee"/> object containing the details of the employee to be created.</param>
+        /// <returns>
+        /// The <see cref="Employee"/> object that was created and saved to the repository, 
+        /// or <c>null</c> if the provided employee is <c>null</c>.
+        /// </returns>
         public Employee Create(Employee employee)
         {
             if(employee != null)
@@ -30,6 +38,14 @@ namespace CodeChallenge.Services
             return employee;
         }
 
+        /// <summary>
+        /// Retrieves an employee record by their ID.
+        /// </summary>
+        /// <param name="id">The ID of the employee to be retrieved.</param>
+        /// <returns>
+        /// The <see cref="Employee"/> object if found, or <c>null</c> if the ID is invalid (null or empty) 
+        /// or no record exists for the given ID.
+        /// </returns>
         public Employee GetById(string id)
         {
             if(!String.IsNullOrEmpty(id))
@@ -40,6 +56,15 @@ namespace CodeChallenge.Services
             return null;
         }
 
+        /// <summary>
+        /// Replaces an existing employee record with a new one.
+        /// </summary>
+        /// <param name="originalEmployee">The <see cref="Employee"/> object to be replaced.</param>
+        /// <param name="newEmployee">The <see cref="Employee"/> object containing the new employee details.</param>
+        /// <returns>
+        /// The <see cref="Employee"/> object representing the new employee with the ID of the original employee.
+        /// If <paramref name="originalEmployee"/> is <c>null</c>, no action is performed, and <c>null</c> is returned.
+        /// </returns>
         public Employee Replace(Employee originalEmployee, Employee newEmployee)
         {
             if(originalEmployee != null)

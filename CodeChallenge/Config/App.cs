@@ -41,10 +41,14 @@ namespace CodeChallenge.Config
 
         private void AddServices(IServiceCollection services)
         {
+            services.AddDbContext<CompensationContext>(options =>
+                options.UseInMemoryDatabase("EmployeeDB"));
 
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IReportingStructureService, ReportingStructureService>();
             services.AddScoped<IEmployeeRepository, EmployeeRespository>();
+            services.AddScoped<ICompensationService, CompensationService>();
+            services.AddScoped<ICompensationRepository, CompensationRepository>();
 
             services.AddControllers();
         }

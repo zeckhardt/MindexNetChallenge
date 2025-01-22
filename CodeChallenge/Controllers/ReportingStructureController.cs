@@ -26,7 +26,10 @@ namespace CodeChallenge.Controllers
         /// Retrieves the reporting structure for an employee by their ID.
         /// </summary>
         /// <param name="id">The ID of the employee whose reporting structure is to be retrieved.</param>
-        /// <returns>A <see cref="ReportingStructure"/> object containing the employee details and total reports.</returns>
+        /// <returns>
+        /// An <see cref="ActionResult"/> containing the reporting structure, including the employee details 
+        /// and the total number of direct and indirect reports.
+        /// </returns>
         [HttpGet("{id}")]
         public ActionResult GetReportingStructure(string id)
         {

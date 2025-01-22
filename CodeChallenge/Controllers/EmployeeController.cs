@@ -22,6 +22,15 @@ namespace CodeChallenge.Controllers
             _employeeService = employeeService;
         }
 
+
+        /// <summary>
+        /// Creates a new employee record.
+        /// </summary>
+        /// <param name="employee">The <see cref="Employee"/> object containing the details of the employee to be created.</param>
+        /// <returns>
+        /// An <see cref="IActionResult"/> containing the created employee's details, 
+        /// along with a location header referencing the newly created resource.
+        /// </returns>
         [HttpPost]
         public IActionResult CreateEmployee([FromBody] Employee employee)
         {
@@ -32,6 +41,14 @@ namespace CodeChallenge.Controllers
             return CreatedAtRoute("getEmployeeById", new { id = employee.EmployeeId }, employee);
         }
 
+        /// <summary>
+        /// Retrieves the details of an employee by their ID.
+        /// </summary>
+        /// <param name="id">The ID of the employee whose details are to be retrieved.</param>
+        /// <returns>
+        /// An <see cref="IActionResult"/> containing the employee details if found, 
+        /// or a <see cref="NotFoundResult"/> if no employee with the given ID exists.
+        /// </returns>
         [HttpGet("{id}", Name = "getEmployeeById")]
         public IActionResult GetEmployeeById(String id)
         {
@@ -45,6 +62,15 @@ namespace CodeChallenge.Controllers
             return Ok(employee);
         }
 
+        /// <summary>
+        /// Replaces an existing employee's details with new information.
+        /// </summary>
+        /// <param name="id">The ID of the employee to be updated.</param>
+        /// <param name="newEmployee">The <see cref="Employee"/> object containing the new details for the employee.</param>
+        /// <returns>
+        /// An <see cref="IActionResult"/> containing the updated employee details if successful, 
+        /// or a <see cref="NotFoundResult"/> if the employee with the given ID does not exist.
+        /// </returns>
         [HttpPut("{id}")]
         public IActionResult ReplaceEmployee(String id, [FromBody]Employee newEmployee)
         {
